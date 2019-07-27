@@ -18,6 +18,5 @@ go-bbs.prod.yaml
 .idea/*
 build/*
 
-/web/static/styles/*.css
 /web/static/styles/*.css.map
 /web/static/styles/.sass-cache/

@@ -22,6 +22,7 @@ require (
 	github.com/iris-contrib/blackfriday v2.0.0+incompatible
 	github.com/iris-contrib/formBinder v5.0.0+incompatible // indirect
 	github.com/iris-contrib/go.uuid v2.0.0+incompatible // indirect
+	github.com/iris-contrib/httpexpect v0.0.0-20180314041918-ebe99fcebbce // indirect
 	github.com/iris-contrib/middleware v0.0.0-20181021162728-8bd5d51b3c2e
 	github.com/jinzhu/gorm v1.9.10
 	github.com/jordan-wright/email v0.0.0-20190218024454-3ea4d25e7cf8
@@ -29,6 +30,7 @@ require (
 	github.com/kataras/golog v0.0.0-20190624001437-99c81de45f40 // indirect
 	github.com/kataras/iris v11.1.1+incompatible
 	github.com/kataras/pio v0.0.0-20190103105442-ea782b38602d // indirect
+	github.com/kataras/rizla v0.1.1 // indirect
 	github.com/mattn/go-runewidth v0.0.4 // indirect
 	github.com/mattn/godown v0.0.0-20180312012330-2e9e17e0ea51
 	github.com/microcosm-cc/bluemonday v1.0.2
