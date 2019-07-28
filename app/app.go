@@ -14,12 +14,23 @@ import (
 
 func RunApp() {
 	app := initIris()
+	initConfig()
 	initLog(app)
 	initPrometheus(app)
 	initDoc(app)
 	initRouter(app)
+	initDataSource(app)
 
-	_ = app.Run(iris.Addr(":8080"), iris.WithoutServerError(iris.ErrServerClosed))
+	_ = app.Run(iris.Addr(":10002"), iris.WithoutServerError(iris.ErrServerClosed))
+}
+
+func initConfig() {
+
+}
+
+//初始化数据源
+func initDataSource(app *iris.Application) {
+
 }
 
 //初始化iris框架
