@@ -1,13 +1,13 @@
 package services
 
 import (
+	"errors"
 	"github.com/jimersylee/go-bbs/services/cache"
 	"github.com/jimersylee/go-bbs/utils"
 	"github.com/jimersylee/go-bbs/utils/avatar"
 	"github.com/jimersylee/go-bbs/utils/simple"
 	"github.com/jimersylee/go-bbs/utils/validate"
 	"github.com/jinzhu/gorm"
-	"github.com/kataras/iris/core/errors"
 	"strings"
 
 	"github.com/jimersylee/go-bbs/model"

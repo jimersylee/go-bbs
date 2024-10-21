@@ -5,12 +5,12 @@ import (
 	"github.com/jimersylee/go-bbs/model"
 	"github.com/jimersylee/go-bbs/services"
 	"github.com/jimersylee/go-bbs/utils/simple"
-	"github.com/kataras/iris"
+	"github.com/kataras/iris/v12/context"
 	"strconv"
 )
 
 type TopicController struct {
-	Ctx iris.Context
+	Ctx *context.Context
 }
 
 func (this *TopicController) GetBy(id int64) *simple.JsonResult {

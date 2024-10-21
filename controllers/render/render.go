@@ -12,8 +12,8 @@ import (
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/jimersylee/go-bbs/utils/simple"
-	"github.com/kataras/iris"
-	"github.com/kataras/iris/context"
+	"github.com/kataras/iris/v12"
+	"github.com/kataras/iris/v12/context"
 	"github.com/sirupsen/logrus"
 
 	"github.com/jimersylee/go-bbs/model"
@@ -21,7 +21,7 @@ import (
 	"github.com/jimersylee/go-bbs/utils"
 )
 
-func View(ctx context.Context, filename string, viewModel iris.Map) {
+func View(ctx *context.Context, filename string, viewModel iris.Map) {
 	if viewModel == nil {
 		viewModel = iris.Map{}
 	}
@@ -47,7 +47,7 @@ func BuildUserDefaultIfNull(id int64) *model.UserInfo {
 	return BuildUser(user)
 }
 
-func BuildCurrentUser(ctx context.Context) *model.UserInfo {
+func BuildCurrentUser(ctx *context.Context) *model.UserInfo {
 	currentUser := session.GetCurrentUser(ctx)
 	if currentUser == nil {
 		return nil

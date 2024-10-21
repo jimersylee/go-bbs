@@ -1,23 +1,22 @@
 package admin
 
 import (
+	"github.com/kataras/iris/v12/context"
 	"strconv"
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
-
-	"github.com/jimersylee/go-bbs/utils/simple"
-	"github.com/kataras/iris"
 
 	"github.com/jimersylee/go-bbs/controllers/render"
 	"github.com/jimersylee/go-bbs/model"
 	"github.com/jimersylee/go-bbs/services"
 	"github.com/jimersylee/go-bbs/services/cache"
 	"github.com/jimersylee/go-bbs/services/collect"
+	"github.com/jimersylee/go-bbs/utils/simple"
 )
 
 type ArticleController struct {
-	Ctx iris.Context
+	Ctx *context.Context
 }
 
 func (this *ArticleController) GetBy(id int64) *simple.JsonResult {

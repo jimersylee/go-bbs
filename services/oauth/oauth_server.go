@@ -3,7 +3,7 @@ package oauth
 import (
 	"github.com/jimersylee/go-bbs/services"
 	"github.com/jimersylee/go-bbs/utils/session"
-	"github.com/kataras/iris"
+	"github.com/kataras/iris/v12"
 	"gopkg.in/oauth2.v3/errors"
 	"gopkg.in/oauth2.v3/manage"
 	"gopkg.in/oauth2.v3/server"

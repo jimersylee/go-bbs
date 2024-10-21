@@ -1,17 +1,16 @@
 package web
 
 import (
-	"github.com/jimersylee/go-bbs/utils/session"
-	"github.com/jimersylee/go-bbs/utils/simple"
-	"github.com/kataras/iris"
-
 	"github.com/jimersylee/go-bbs/controllers/render"
 	"github.com/jimersylee/go-bbs/model"
 	"github.com/jimersylee/go-bbs/services"
+	"github.com/jimersylee/go-bbs/utils/session"
+	"github.com/jimersylee/go-bbs/utils/simple"
+	"github.com/kataras/iris/v12/context"
 )
 
 type CommentController struct {
-	Ctx iris.Context
+	Ctx *context.Context
 }
 
 func (this *CommentController) GetList() *simple.JsonResult {

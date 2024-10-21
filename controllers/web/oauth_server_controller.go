@@ -5,16 +5,16 @@ import (
 	"github.com/jimersylee/go-bbs/services"
 	"github.com/jimersylee/go-bbs/services/oauth"
 	"github.com/jimersylee/go-bbs/utils/session"
-	"github.com/kataras/iris"
 	"github.com/kataras/iris/mvc"
+	"github.com/kataras/iris/v12"
 	"net/http"
 
 	"github.com/jimersylee/go-bbs/utils/simple"
-	"github.com/kataras/iris/context"
+	"github.com/kataras/iris/v12/context"
 )
 
 type OauthServerController struct {
-	Ctx context.Context
+	Ctx *context.Context
 }
 
 // 请求授权，返回code

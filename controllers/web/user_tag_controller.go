@@ -3,8 +3,9 @@ package web
 import (
 	"github.com/jimersylee/go-bbs/utils/session"
 	"github.com/jimersylee/go-bbs/utils/simple"
-	"github.com/kataras/iris"
 	"github.com/kataras/iris/mvc"
+	"github.com/kataras/iris/v12"
+	"github.com/kataras/iris/v12/context"
 
 	"github.com/jimersylee/go-bbs/controllers/render"
 	"github.com/jimersylee/go-bbs/model"
@@ -13,7 +14,7 @@ import (
 )
 
 type UserTagController struct {
-	Ctx iris.Context
+	Ctx *context.Context
 }
 
 // 标签列表页面

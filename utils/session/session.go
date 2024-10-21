@@ -7,7 +7,7 @@ import (
 	"github.com/jimersylee/go-bbs/model"
 	"github.com/jimersylee/go-bbs/services/cache"
 	"github.com/jimersylee/go-bbs/utils/config"
-	"github.com/kataras/iris/context"
+	"github.com/kataras/iris/v12/context"
 	"github.com/sirupsen/logrus"
 	"net/http"
 	"strconv"
@@ -33,7 +33,7 @@ func InitSessionManager() {
 	)
 }
 
-func Start(ctx context.Context) session.Store {
+func Start(ctx *context.Context) session.Store {
 	return StartByRequest(ctx.ResponseWriter(), ctx.Request())
 }
 
@@ -45,7 +45,7 @@ func StartByRequest(w http.ResponseWriter, r *http.Request) session.Store {
 	return store
 }
 
-func SetCurrentUser(ctx context.Context, userId int64) {
+func SetCurrentUser(ctx *context.Context, userId int64) {
 	store := Start(ctx)
 	store.Set(CurrentUser, strconv.FormatInt(userId, 10))
 	err := store.Save()
@@ -54,7 +54,7 @@ func SetCurrentUser(ctx context.Context, userId int64) {
 	}
 }
 
-func GetCurrentUser(ctx context.Context) *model.User {
+func GetCurrentUser(ctx *context.Context) *model.User {
 	return GetCurrentUserByRequest(ctx.ResponseWriter(), ctx.Request())
 }
 
@@ -73,7 +73,7 @@ func GetCurrentUserByRequest(w http.ResponseWriter, r *http.Request) *model.User
 	return nil
 }
 
-func DelCurrentUser(ctx context.Context) {
+func DelCurrentUser(ctx *context.Context) {
 	store := Start(ctx)
 	store.Delete(CurrentUser)
 	err := store.Save()

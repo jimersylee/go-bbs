@@ -4,15 +4,16 @@ import (
 	"github.com/jimersylee/go-bbs/services"
 	"github.com/jimersylee/go-bbs/services/cache"
 	"github.com/jimersylee/go-bbs/utils/simple"
-	"github.com/kataras/iris"
 	"github.com/kataras/iris/mvc"
+	"github.com/kataras/iris/v12"
+	"github.com/kataras/iris/v12/context"
 
 	"github.com/jimersylee/go-bbs/controllers/render"
 	"github.com/jimersylee/go-bbs/model"
 )
 
 type IndexController struct {
-	Ctx iris.Context
+	Ctx *context.Context
 }
 
 func (this *IndexController) Any() mvc.View {

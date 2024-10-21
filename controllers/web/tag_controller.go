@@ -8,14 +8,15 @@ import (
 	"github.com/jimersylee/go-bbs/utils"
 	"github.com/jimersylee/go-bbs/utils/session"
 	"github.com/jimersylee/go-bbs/utils/simple"
-	"github.com/kataras/iris"
+	"github.com/kataras/iris/v12"
+	"github.com/kataras/iris/v12/context"
 	"github.com/sirupsen/logrus"
 	"strconv"
 	"strings"
 )
 
 type TagController struct {
-	Ctx iris.Context
+	Ctx *context.Context
 }
 
 // 添加标签页面
@@ -76,7 +77,7 @@ func (this *TagController) PostAutocomplete() *simple.JsonResult {
 }
 
 // 所有标签列表
-func GetTags(ctx iris.Context) {
+func GetTags(ctx *context.Context) {
 	page := ctx.Params().GetIntDefault("page", 1)
 	activeUsers := cache.UserCache.GetActiveUsers()
 

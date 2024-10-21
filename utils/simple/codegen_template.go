@@ -137,12 +137,12 @@ import (
 	"{{.PkgName}}/model"
 	"{{.PkgName}}/services"
 	"github.com/jimersylee/go-bbs/utils/simple"
-	"github.com/kataras/iris"
+	"github.com/kataras/iris/v12"
 	"strconv"
 )
 
 type {{.Name}}Controller struct {
-	Ctx             iris.Context
+	Ctx             *context.Context
 }
 
 func (this *{{.Name}}Controller) GetBy(id int64) *simple.JsonResult {

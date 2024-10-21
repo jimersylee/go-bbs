@@ -3,6 +3,7 @@ package web
 import (
 	"github.com/jimersylee/go-bbs/services/cache"
 	"github.com/jimersylee/go-bbs/utils/session"
+	"github.com/kataras/iris/v12/context"
 	"github.com/sirupsen/logrus"
 	"io/ioutil"
 	"strconv"
@@ -16,11 +17,11 @@ import (
 	"github.com/jimersylee/go-bbs/services/collect"
 	"github.com/jimersylee/go-bbs/utils"
 
-	"github.com/kataras/iris"
+	"github.com/kataras/iris/v12"
 )
 
 type ArticleController struct {
-	Ctx iris.Context
+	Ctx *context.Context
 }
 
 // 文章详情页
@@ -266,7 +267,7 @@ func (this *ArticleController) GetBaidu() *simple.JsonResult {
 }
 
 // 文章列表
-func GetArticles(ctx iris.Context) {
+func GetArticles(ctx *context.Context) {
 	page := ctx.Params().GetIntDefault("page", 1)
 
 	categories := cache.CategoryCache.GetAllCategories()
@@ -291,7 +292,7 @@ func GetArticles(ctx iris.Context) {
 }
 
 // 分类文章列表
-func GetCategoryArticles(ctx iris.Context) {
+func GetCategoryArticles(ctx *context.Context) {
 	categoryId := ctx.Params().GetInt64Default("categoryId", 0)
 	page := ctx.Params().GetIntDefault("page", 1)
 
@@ -323,7 +324,7 @@ func GetCategoryArticles(ctx iris.Context) {
 }
 
 // 标签文章列表
-func GetTagArticles(ctx iris.Context) {
+func GetTagArticles(ctx *context.Context) {
 	tagId := ctx.Params().GetInt64Default("tagId", 0)
 	page := ctx.Params().GetIntDefault("page", 1)
 

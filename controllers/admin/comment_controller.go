@@ -2,17 +2,16 @@ package admin
 
 import (
 	"github.com/jimersylee/go-bbs/controllers/render"
+	"github.com/kataras/iris/v12/context"
 	"strconv"
-
-	"github.com/jimersylee/go-bbs/utils/simple"
-	"github.com/kataras/iris"
 
 	"github.com/jimersylee/go-bbs/model"
 	"github.com/jimersylee/go-bbs/services"
+	"github.com/jimersylee/go-bbs/utils/simple"
 )
 
 type CommentController struct {
-	Ctx iris.Context
+	Ctx *context.Context
 }
 
 func (this *CommentController) GetBy(id int64) *simple.JsonResult {

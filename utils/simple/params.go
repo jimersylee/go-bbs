@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/kataras/iris"
+	"github.com/kataras/iris/v12/context"
 )
 
 // param error
@@ -14,11 +14,11 @@ func paramError(name string) error {
 	return errors.New(fmt.Sprintf("unable to find param value '%s'", name))
 }
 
-func FormValue(ctx iris.Context, name string) string {
+func FormValue(ctx *context.Context, name string) string {
 	return ctx.FormValue(name)
 }
 
-func FormValueRequired(ctx iris.Context, name string) (string, error) {
+func FormValueRequired(ctx *context.Context, name string) (string, error) {
 	str := FormValue(ctx, name)
 	if len(str) == 0 {
 		return "", errors.New("参数：" + name + "不能为空")
@@ -26,11 +26,11 @@ func FormValueRequired(ctx iris.Context, name string) (string, error) {
 	return str, nil
 }
 
-func FormValueDefault(ctx iris.Context, name, def string) string {
+func FormValueDefault(ctx *context.Context, name, def string) string {
 	return ctx.FormValueDefault(name, def)
 }
 
-func FormValueInt(ctx iris.Context, name string) (int, error) {
+func FormValueInt(ctx *context.Context, name string) (int, error) {
 	str := ctx.FormValue(name)
 	if str == "" {
 		return 0, paramError(name)
@@ -38,14 +38,14 @@ func FormValueInt(ctx iris.Context, name string) (int, error) {
 	return strconv.Atoi(str)
 }
 
-func FormValueIntDefault(ctx iris.Context, name string, def int) int {
+func FormValueIntDefault(ctx *context.Context, name string, def int) int {
 	if v, err := FormValueInt(ctx, name); err == nil {
 		return v
 	}
 	return def
 }
 
-func FormValueInt64(ctx iris.Context, name string) (int64, error) {
+func FormValueInt64(ctx *context.Context, name string) (int64, error) {
 	str := ctx.FormValue(name)
 	if str == "" {
 		return 0, paramError(name)
@@ -53,14 +53,14 @@ func FormValueInt64(ctx iris.Context, name string) (int64, error) {
 	return strconv.ParseInt(str, 10, 64)
 }
 
-func FormValueInt64Default(ctx iris.Context, name string, def int64) int64 {
+func FormValueInt64Default(ctx *context.Context, name string, def int64) int64 {
 	if v, err := FormValueInt64(ctx, name); err == nil {
 		return v
 	}
 	return def
 }
 
-func FormValueInt64Array(ctx iris.Context, name string) []int64 {
+func FormValueInt64Array(ctx *context.Context, name string) []int64 {
 	str := ctx.FormValue(name)
 	if str == "" {
 		return nil
@@ -80,7 +80,7 @@ func FormValueInt64Array(ctx iris.Context, name string) []int64 {
 	return ret
 }
 
-func FormValueStringArray(ctx iris.Context, name string) []string {
+func FormValueStringArray(ctx *context.Context, name string) []string {
 	str := ctx.FormValue(name)
 	if len(str) == 0 {
 		return nil
@@ -100,7 +100,7 @@ func FormValueStringArray(ctx iris.Context, name string) []string {
 	return ret
 }
 
-func FormValueBool(ctx iris.Context, name string) (bool, error) {
+func FormValueBool(ctx *context.Context, name string) (bool, error) {
 	str := ctx.FormValue(name)
 	if str == "" {
 		return false, paramError(name)
@@ -108,7 +108,7 @@ func FormValueBool(ctx iris.Context, name string) (bool, error) {
 	return strconv.ParseBool(str)
 }
 
-func GetPaging(ctx iris.Context) *Paging {
+func GetPaging(ctx *context.Context) *Paging {
 	page := FormValueIntDefault(ctx, "page", 1)
 	limit := FormValueIntDefault(ctx, "limit", 20)
 	if page <= 0 {

@@ -1,13 +1,13 @@
 package collect
 
 import (
+	"errors"
 	"github.com/jimersylee/go-bbs/services"
 	"github.com/jimersylee/go-bbs/utils/oss"
 	"strings"
 
 	"github.com/jimersylee/go-bbs/utils/simple"
 	"github.com/jinzhu/gorm"
-	"github.com/kataras/iris/core/errors"
 
 	"github.com/jimersylee/go-bbs/model"
 )

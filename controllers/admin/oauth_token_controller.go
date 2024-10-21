@@ -3,12 +3,12 @@ package admin
 import (
 	"github.com/jimersylee/go-bbs/services"
 	"github.com/jimersylee/go-bbs/utils/simple"
-	"github.com/kataras/iris"
+	"github.com/kataras/iris/v12/context"
 	"strconv"
 )
 
 type OauthTokenController struct {
-	Ctx iris.Context
+	Ctx *context.Context
 }
 
 func (this *OauthTokenController) GetBy(id int64) *simple.JsonResult {

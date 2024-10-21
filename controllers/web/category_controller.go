@@ -1,9 +1,7 @@
 package web
 
-import (
-	"github.com/kataras/iris"
-)
+import "github.com/kataras/iris/v12/context"
 
 type CategoryController struct {
-	Ctx iris.Context
+	Ctx *context.Context
 }

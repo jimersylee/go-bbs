@@ -1,20 +1,19 @@
 package simple
 
 import (
-	"github.com/jinzhu/gorm"
-	"github.com/kataras/iris"
-
 	"github.com/jimersylee/go-bbs/utils/simple/strcase"
+	"github.com/jinzhu/gorm"
+	"github.com/kataras/iris/v12/context"
 )
 
 type ParamQueries struct {
-	Ctx         iris.Context
+	Ctx         *context.Context
 	Queries     []queryPair  // 条件
 	OrderByCols []OrderByCol // 排序
 	Paging      *Paging      // 分页
 }
 
-func NewParamQueries(ctx iris.Context) *ParamQueries {
+func NewParamQueries(ctx *context.Context) *ParamQueries {
 	return &ParamQueries{
 		Ctx: ctx,
 	}
@@ -31,7 +30,7 @@ func (o *ParamQueries) value(column string) string {
 }
 
 func (o *ParamQueries) Eq(column string, args ...interface{}) *ParamQueries {
-	o.Where(column+" = ?", args)
+
 	return o
 }
 

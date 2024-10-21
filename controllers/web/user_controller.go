@@ -9,8 +9,8 @@ import (
 	"strings"
 
 	"github.com/jimersylee/go-bbs/utils/simple"
-	"github.com/kataras/iris"
-	"github.com/kataras/iris/context"
+	"github.com/kataras/iris/v12"
+	"github.com/kataras/iris/v12/context"
 	"github.com/sirupsen/logrus"
 
 	"github.com/jimersylee/go-bbs/controllers/render"
@@ -22,7 +22,7 @@ import (
 const oauthStateString = "random"
 
 type UserController struct {
-	Ctx iris.Context
+	Ctx *context.Context
 }
 
 // 用户主页
@@ -359,7 +359,7 @@ func (this *UserController) GetMsgcount() *simple.JsonResult {
 }
 
 // 用户中心 - 用户所有的文章
-func GetUserArticles(ctx context.Context) {
+func GetUserArticles(ctx *context.Context) {
 	userId := ctx.Params().GetInt64Default("userId", 0)
 	page := ctx.Params().GetIntDefault("page", 1)
 	user := cache.UserCache.Get(userId)
@@ -384,7 +384,7 @@ func GetUserArticles(ctx context.Context) {
 }
 
 // 用户中心 - 用户所有的标签
-func GetUserTags(ctx context.Context) {
+func GetUserTags(ctx *context.Context) {
 	user := session.GetCurrentUser(ctx)
 	userId := ctx.Params().GetInt64Default("userId", 0)
 	page := ctx.Params().GetIntDefault("page", 1)
@@ -420,7 +420,7 @@ func GetUserTags(ctx context.Context) {
 }
 
 // 用户中心 - 用户所有的搜藏列表
-func GetUserFavorites(ctx context.Context) {
+func GetUserFavorites(ctx *context.Context) {
 	user := session.GetCurrentUser(ctx)
 	userId := ctx.Params().GetInt64Default("userId", 0)
 	page := ctx.Params().GetIntDefault("page", 1)
@@ -451,7 +451,7 @@ func GetUserFavorites(ctx context.Context) {
 }
 
 // 用户中心 - 消息列表
-func GetUserMessages(ctx context.Context) {
+func GetUserMessages(ctx *context.Context) {
 	user := session.GetCurrentUser(ctx)
 	userId := ctx.Params().GetInt64Default("userId", 0)
 	page := ctx.Params().GetIntDefault("page", 1)
@@ -486,7 +486,7 @@ func GetUserMessages(ctx context.Context) {
 }
 
 // 用户中心 - 主题列表
-func GetUserTopics(ctx context.Context) {
+func GetUserTopics(ctx *context.Context) {
 	userId := ctx.Params().GetInt64Default("userId", 0)
 	page := ctx.Params().GetIntDefault("page", 1)
 

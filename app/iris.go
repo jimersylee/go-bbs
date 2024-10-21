@@ -1,11 +1,11 @@
 package app
 
 import (
-	"github.com/iris-contrib/middleware/cors"
 	"github.com/jimersylee/go-bbs/controllers/web"
 	"github.com/jimersylee/go-bbs/model"
 	"github.com/jimersylee/go-bbs/services/cache"
 	"github.com/jimersylee/go-bbs/utils/config"
+	"github.com/kataras/iris/v12"
 	"net/http"
 	"os"
 	"os/signal"
@@ -13,12 +13,11 @@ import (
 	"syscall"
 
 	"github.com/jimersylee/go-bbs/utils/simple"
-	"github.com/kataras/iris"
-	"github.com/kataras/iris/context"
-	"github.com/kataras/iris/middleware/logger"
-	"github.com/kataras/iris/middleware/recover"
-	"github.com/kataras/iris/mvc"
-	"github.com/kataras/iris/view"
+	"github.com/kataras/iris/v12/context"
+	"github.com/kataras/iris/v12/middleware/logger"
+	"github.com/kataras/iris/v12/middleware/recover"
+	"github.com/kataras/iris/v12/mvc"
+	"github.com/kataras/iris/v12/view"
 	"github.com/sirupsen/logrus"
 
 	"github.com/jimersylee/go-bbs/controllers/admin"
@@ -32,20 +31,13 @@ func InitIris() {
 	app.Logger().SetLevel("warn")
 	app.Use(recover.New())
 	app.Use(logger.New())
-	app.Use(cors.New(cors.Options{
-		AllowedOrigins:   []string{"*"}, // allows everything, use that to change the hosts.
-		AllowCredentials: true,
-		MaxAge:           600,
-		AllowedMethods:   []string{iris.MethodGet, iris.MethodPost, iris.MethodOptions, iris.MethodHead, iris.MethodDelete, iris.MethodPut},
-		AllowedHeaders:   []string{"*"},
-	}))
 	app.AllowMethods(iris.MethodOptions)
 
-	app.OnAnyErrorCode(func(ctx context.Context) {
+	app.OnAnyErrorCode(func(ctx *context.Context) {
 		path := ctx.Path()
 		var err error
 		if strings.Contains(path, "/api/admin/") {
-			_, err = ctx.JSON(simple.ErrorCode(ctx.GetStatusCode(), "Http error"))
+			err = ctx.JSON(simple.ErrorCode(ctx.GetStatusCode(), "Http error"))
 		} else {
 			if ctx.GetStatusCode() == 404 {
 				render.View(ctx, "404.html", iris.Map{
@@ -66,8 +58,6 @@ func InitIris() {
 
 	{
 		mvc.Configure(app.Party("/"), func(m *mvc.Application) {
-			m.Router.Use(middleware.NewGlobalMiddleware())
-
 			m.Party("/upload").Handle(new(web.UploadController))
 
 			m.Party("/").Handle(new(web.IndexController))
@@ -105,7 +95,7 @@ func InitIris() {
 			m.Router.Get("/tags", web.GetTags)
 			m.Router.Get("/tags/{page:int}", web.GetTags)
 
-			m.Router.Get("/redirect", func(ctx context.Context) {
+			m.Router.Get("/redirect", func(ctx *context.Context) {
 				url := ctx.FormValue("url")
 				render.View(ctx, "redirect.html", iris.Map{
 					model.TplSiteTitle: "跳转中",
@@ -161,10 +151,10 @@ func InitIris() {
 
 func handleViews(app *iris.Application) {
 	if len(config.Conf.RootStaticPath) > 0 {
-		app.StaticWeb("/", config.Conf.RootStaticPath)
+		app.HandleDir("/", config.Conf.RootStaticPath)
 	}
 	if len(config.Conf.StaticPath) > 0 {
-		app.StaticWeb("/static", config.Conf.StaticPath)
+		app.HandleDir("/static", config.Conf.StaticPath)
 	}
 
 	engine := iris.HTML(config.Conf.ViewsPath, ".html").Reload(true)

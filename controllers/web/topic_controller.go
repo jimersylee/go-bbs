@@ -7,13 +7,13 @@ import (
 	"github.com/jimersylee/go-bbs/utils"
 	"github.com/jimersylee/go-bbs/utils/session"
 	"github.com/jimersylee/go-bbs/utils/simple"
-	"github.com/kataras/iris"
-	"github.com/kataras/iris/context"
+	"github.com/kataras/iris/v12"
+	"github.com/kataras/iris/v12/context"
 	"strings"
 )
 
 type TopicController struct {
-	Ctx iris.Context
+	Ctx *context.Context
 }
 
 func (this *TopicController) GetBy(topicId int64) {
@@ -130,7 +130,7 @@ func (this *TopicController) PostFavoriteBy(topicId int64) *simple.JsonResult {
 }
 
 // 主题列表
-func GetTopics(ctx context.Context) {
+func GetTopics(ctx *context.Context) {
 	page := ctx.Params().GetIntDefault("page", 1)
 
 	topics, paging := services.TopicService.Query(simple.NewParamQueries(ctx).
@@ -147,7 +147,7 @@ func GetTopics(ctx context.Context) {
 }
 
 // 标签主题列表
-func GetTagTopics(ctx iris.Context) {
+func GetTagTopics(ctx *context.Context) {
 	tagId := ctx.Params().GetInt64Default("tagId", 0)
 	page := ctx.Params().GetIntDefault("page", 1)
 

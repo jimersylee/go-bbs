@@ -3,17 +3,18 @@ package web
 import (
 	"github.com/jimersylee/go-bbs/utils/oss"
 	"github.com/jimersylee/go-bbs/utils/session"
+	"github.com/kataras/iris/v12/context"
 	"io/ioutil"
 
 	"github.com/jimersylee/go-bbs/utils/simple"
-	"github.com/kataras/iris"
+	"github.com/kataras/iris/v12"
 	"github.com/sirupsen/logrus"
 )
 
 const avatarMaxBytes int64 = 1024 * 1024 // 1M
 
 type UploadController struct {
-	Ctx iris.Context
+	Ctx *context.Context
 }
 
 func (this *UploadController) Post() *simple.JsonResult {
@@ -50,7 +51,7 @@ func (this *UploadController) Post() *simple.JsonResult {
 func (this *UploadController) PostEditor() {
 	user := session.GetCurrentUser(this.Ctx)
 	if user == nil {
-		_, _ = this.Ctx.JSON(iris.Map{
+		_ = this.Ctx.JSON(iris.Map{
 			"msg":  "请先登录",
 			"code": 1,
 		})
@@ -96,7 +97,7 @@ func (this *UploadController) PostEditor() {
 		succMap[file.Filename] = url
 	}
 
-	_, _ = this.Ctx.JSON(iris.Map{
+	_ = this.Ctx.JSON(iris.Map{
 		"msg":  "",
 		"code": 0,
 		"data": iris.Map{
@@ -111,7 +112,7 @@ func (this *UploadController) PostEditor() {
 func (this *UploadController) PostFetch() {
 	user := session.GetCurrentUser(this.Ctx)
 	if user == nil {
-		_, _ = this.Ctx.JSON(iris.Map{
+		_ = this.Ctx.JSON(iris.Map{
 			"msg":  "请先登录",
 			"code": 1,
 		})
@@ -123,7 +124,7 @@ func (this *UploadController) PostFetch() {
 
 	err := this.Ctx.ReadJSON(&data)
 	if err != nil {
-		_, _ = this.Ctx.JSON(iris.Map{
+		_ = this.Ctx.JSON(iris.Map{
 			"msg":  err.Error(),
 			"code": 0,
 		})
@@ -133,12 +134,12 @@ func (this *UploadController) PostFetch() {
 	url := data["url"]
 	output, err := oss.CopyImage(url)
 	if err != nil {
-		_, _ = this.Ctx.JSON(iris.Map{
+		_ = this.Ctx.JSON(iris.Map{
 			"msg":  err.Error(),
 			"code": 0,
 		})
 	}
-	_, _ = this.Ctx.JSON(iris.Map{
+	_ = this.Ctx.JSON(iris.Map{
 		"msg":  "",
 		"code": 0,
 		"data": iris.Map{
