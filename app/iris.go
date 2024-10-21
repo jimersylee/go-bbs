@@ -1,6 +1,7 @@
 package app
 
 import (
+	"github.com/iris-contrib/middleware/cors"
 	"github.com/jimersylee/go-bbs/controllers/web"
 	"github.com/jimersylee/go-bbs/model"
 	"github.com/jimersylee/go-bbs/services/cache"
@@ -11,7 +12,6 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/iris-contrib/middleware/cors"
 	"github.com/jimersylee/go-bbs/utils/simple"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/context"
