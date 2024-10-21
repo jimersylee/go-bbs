@@ -2,12 +2,12 @@ package oauth
 
 import (
 	"errors"
+	"github.com/go-oauth2/oauth2/v4"
+	"github.com/go-oauth2/oauth2/v4/models"
 	"github.com/jimersylee/go-bbs/model"
 	"github.com/jimersylee/go-bbs/repositories"
 	"github.com/jimersylee/go-bbs/utils/simple"
-	"github.com/json-iterator/go"
-	"gopkg.in/oauth2.v3"
-	"gopkg.in/oauth2.v3/models"
+	jsoniter "github.com/json-iterator/go"
 )
 
 // TokenStore实现

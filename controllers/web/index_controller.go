@@ -4,9 +4,9 @@ import (
 	"github.com/jimersylee/go-bbs/services"
 	"github.com/jimersylee/go-bbs/services/cache"
 	"github.com/jimersylee/go-bbs/utils/simple"
-	"github.com/kataras/iris/mvc"
 	"github.com/kataras/iris/v12"
 	"github.com/kataras/iris/v12/context"
+	"github.com/kataras/iris/v12/mvc"
 
 	"github.com/jimersylee/go-bbs/controllers/render"
 	"github.com/jimersylee/go-bbs/model"

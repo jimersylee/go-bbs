@@ -2,11 +2,11 @@ package oauth
 
 import (
 	"errors"
+	"github.com/go-oauth2/oauth2/v4"
+	"github.com/go-oauth2/oauth2/v4/models"
 	"github.com/jimersylee/go-bbs/model"
 	"github.com/jimersylee/go-bbs/repositories"
 	"github.com/jimersylee/go-bbs/utils/simple"
-	"gopkg.in/oauth2.v3"
-	"gopkg.in/oauth2.v3/models"
 )
 
 type clientStore struct {

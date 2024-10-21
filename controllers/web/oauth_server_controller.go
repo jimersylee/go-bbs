@@ -5,8 +5,8 @@ import (
 	"github.com/jimersylee/go-bbs/services"
 	"github.com/jimersylee/go-bbs/services/oauth"
 	"github.com/jimersylee/go-bbs/utils/session"
-	"github.com/kataras/iris/mvc"
 	"github.com/kataras/iris/v12"
+	"github.com/kataras/iris/v12/mvc"
 	"net/http"
 
 	"github.com/jimersylee/go-bbs/utils/simple"

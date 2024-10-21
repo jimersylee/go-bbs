@@ -1,12 +1,13 @@
 package oauth
 
 import (
+	"context"
+	"github.com/go-oauth2/oauth2/v4/errors"
+	"github.com/go-oauth2/oauth2/v4/manage"
+	"github.com/go-oauth2/oauth2/v4/server"
 	"github.com/jimersylee/go-bbs/services"
 	"github.com/jimersylee/go-bbs/utils/session"
 	"github.com/kataras/iris/v12"
-	"gopkg.in/oauth2.v3/errors"
-	"gopkg.in/oauth2.v3/manage"
-	"gopkg.in/oauth2.v3/server"
 	"log"
 	"net/http"
 	"net/url"
@@ -21,12 +22,12 @@ type Server struct {
 }
 
 func NewOauthServer() *Server {
-	oauthTokenStore := newTokenStore()
-	oauthClientStore := newClientStore()
+	//oauthTokenStore := newTokenStore()
+	//oauthClientStore := newClientStore()
 
 	manager := manage.NewDefaultManager()
-	manager.MapTokenStorage(oauthTokenStore)
-	manager.MapClientStorage(oauthClientStore)
+	//manager.MapTokenStorage(oauthTokenStore)
+	//manager.MapClientStorage(oauthClientStore)
 	manager.SetAuthorizeCodeTokenCfg(&manage.Config{
 		AccessTokenExp:    time.Hour * 24 * 30, // 访问令牌过期时间（默认为2小时）
 		RefreshTokenExp:   time.Hour * 24 * 60, // 更新令牌过期时间（默认为72小时）
@@ -41,7 +42,7 @@ func NewOauthServer() *Server {
 	srv.SetResponseErrorHandler(func(re *errors.Response) {
 		log.Println("Response Error:", re.Error.Error())
 	})
-	srv.SetPasswordAuthorizationHandler(func(username, password string) (userId string, err error) {
+	srv.SetPasswordAuthorizationHandler(func(ctx context.Context, string, username string, password string) (userId string, err error) {
 		user, err := services.UserService.SignIn(username, password)
 		if err != nil {
 			err = errors.ErrAccessDenied

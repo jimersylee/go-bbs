@@ -1,9 +1,9 @@
 package oauth
 
 import (
+	"github.com/go-oauth2/oauth2/v4"
 	"github.com/jimersylee/go-bbs/controllers/render"
 	"github.com/jimersylee/go-bbs/model"
-	"gopkg.in/oauth2.v3"
 	"net/http"
 	"strconv"
 
@@ -23,7 +23,7 @@ func GetUserInfo(accessToken string) *model.UserInfo {
 	if len(accessToken) == 0 {
 		return nil
 	}
-	token, err := ServerInstance.Srv.Manager.LoadAccessToken(accessToken)
+	token, err := ServerInstance.Srv.Manager.LoadAccessToken(nil, accessToken)
 	if err != nil {
 		logrus.Errorln(err)
 		return nil
