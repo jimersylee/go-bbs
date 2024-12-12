@@ -8,6 +8,7 @@ require (
 	github.com/PuerkitoBio/goquery v1.10.0
 	github.com/aliyun/aliyun-oss-go-sdk v3.0.2+incompatible
 	github.com/emirpasic/gods v1.18.1
+	github.com/go-oauth2/oauth2/v4 v4.5.2
 	github.com/go-session/redis v3.0.1+incompatible
 	github.com/go-session/session v3.1.2+incompatible
 	github.com/goburrow/cache v0.1.4
@@ -25,7 +26,7 @@ require (
 	github.com/sundy-li/html2article v0.0.0-20180131134645-09ac198090c2
 	github.com/tidwall/gjson v1.18.0
 	github.com/vinta/pangu v3.0.0+incompatible
-	golang.org/x/crypto v0.28.0
+	golang.org/x/crypto v0.31.0
 	golang.org/x/oauth2 v0.23.0
 	gopkg.in/resty.v1 v1.12.0
 	gopkg.in/yaml.v2 v2.4.0
@@ -45,7 +46,6 @@ require (
 	github.com/blang/semver/v4 v4.0.0 // indirect
 	github.com/fatih/structs v1.1.0 // indirect
 	github.com/flosch/pongo2/v4 v4.0.2 // indirect
-	github.com/go-oauth2/oauth2/v4 v4.5.2 // indirect
 	github.com/go-redis/redis v6.15.9+incompatible // indirect
 	github.com/go-sql-driver/mysql v1.8.1 // indirect
 	github.com/gobwas/httphead v0.1.0 // indirect
@@ -76,32 +76,24 @@ require (
 	github.com/nats-io/nats.go v1.37.0 // indirect
 	github.com/nats-io/nkeys v0.4.7 // indirect
 	github.com/nats-io/nuid v1.0.1 // indirect
-	github.com/onsi/ginkgo v1.13.0 // indirect
-	github.com/onsi/gomega v1.10.1 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/schollz/closestmatch v2.1.0+incompatible // indirect
-	github.com/sergi/go-diff v1.1.0 // indirect
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	github.com/tdewolff/minify/v2 v2.21.0 // indirect
 	github.com/tdewolff/parse/v2 v2.7.18 // indirect
 	github.com/tidwall/btree v1.7.0 // indirect
 	github.com/tidwall/buntdb v1.3.2 // indirect
-	github.com/tidwall/grect v0.1.4 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
 	github.com/tidwall/pretty v1.2.1 // indirect
-	github.com/tidwall/rtred v0.1.2 // indirect
-	github.com/tidwall/rtree v1.10.0 // indirect
-	github.com/tidwall/tinyqueue v0.1.1 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
-	github.com/valyala/fasthttp v1.34.0 // indirect
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/yosssi/ace v0.0.5 // indirect
 	golang.org/x/exp v0.0.0-20241009180824-f66d83c29e7c // indirect
 	golang.org/x/net v0.30.0 // indirect
-	golang.org/x/sys v0.26.0 // indirect
-	golang.org/x/text v0.19.0 // indirect
+	golang.org/x/sys v0.28.0 // indirect
+	golang.org/x/text v0.21.0 // indirect
 	golang.org/x/time v0.7.0 // indirect
 	golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da // indirect
 	google.golang.org/protobuf v1.35.1 // indirect
