@@ -1,6 +1,7 @@
 module github.com/jimersylee/go-bbs
 
-go 1.23
+go 1.23.0
+
 toolchain go1.24.1
 
 require (
@@ -25,8 +26,8 @@ require (
 	github.com/sundy-li/html2article v0.0.0-20180131134645-09ac198090c2
 	github.com/tidwall/gjson v1.18.0
 	github.com/vinta/pangu v3.0.0+incompatible
-	golang.org/x/crypto v0.36.0
-	golang.org/x/oauth2 v0.23.0
+	golang.org/x/crypto v0.38.0
+	golang.org/x/oauth2 v0.30.0
 	gopkg.in/resty.v1 v1.12.0
 	gopkg.in/yaml.v2 v2.4.0
 )
@@ -91,8 +92,8 @@ require (
 	github.com/yosssi/ace v0.0.5 // indirect
 	golang.org/x/exp v0.0.0-20241009180824-f66d83c29e7c // indirect
 	golang.org/x/net v0.38.0 // indirect
-	golang.org/x/sys v0.31.0 // indirect
-	golang.org/x/text v0.23.0 // indirect
+	golang.org/x/sys v0.33.0 // indirect
+	golang.org/x/text v0.25.0 // indirect
 	golang.org/x/time v0.7.0 // indirect
 	golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da // indirect
 	google.golang.org/protobuf v1.35.1 // indirect
