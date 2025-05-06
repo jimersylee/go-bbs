@@ -21,3 +21,4 @@ build/*
 /web/static/styles/*.css
 /web/static/styles/*.css.map
 /web/static/styles/.sass-cache/
+vendor
